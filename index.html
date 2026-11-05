@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organizaê — aplicação web para gerenciar suas tarefas do dia a dia.">
+  <title>Organizaê — Gerencie suas tarefas</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="container cabecalho__conteudo">
+      <h1 class="cabecalho__titulo">
+        <span aria-hidden="true"></span> Organizaê
+      </h1>
+      <p class="cabecalho__subtitulo">Suas tarefas, organizadas.</p>
+    </div>
+  </header>
+
+  <main class="container principal">
+
+    <!-- Formulário de cadastro -->
+    <section class="painel" aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario" class="visually-hidden">Cadastrar nova tarefa</h2>
+
+      <form id="form-tarefa" class="formulario" autocomplete="off">
+        <label for="campo-tarefa" class="visually-hidden">Descrição da tarefa</label>
+        <input
+          type="text"
+          id="campo-tarefa"
+          class="formulario__campo"
+          placeholder="O que você precisa fazer hoje?"
+          maxlength="120"
+          required
+        >
+        <button type="submit" class="botao botao--primario" id="botao-adicionar">
+          Adicionar
+        </button>
+      </form>
+      <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Filtros e contadores -->
+    <section class="painel painel--controles" aria-labelledby="titulo-filtros">
+      <h2 id="titulo-filtros" class="visually-hidden">Filtros e contadores</h2>
+
+      <div class="filtros" role="tablist" aria-label="Filtrar tarefas">
+        <button type="button" class="filtro filtro--ativo" data-filtro="todas" role="tab" aria-selected="true">
+          Todas <span class="filtro__contador" id="contador-todas">0</span>
+        </button>
+        <button type="button" class="filtro" data-filtro="pendentes" role="tab" aria-selected="false">
+          Pendentes <span class="filtro__contador" id="contador-pendentes">0</span>
+        </button>
+        <button type="button" class="filtro" data-filtro="concluidas" role="tab" aria-selected="false">
+          Concluídas <span class="filtro__contador" id="contador-concluidas">0</span>
+        </button>
+      </div>
+
+      <button type="button" class="botao botao--texto" id="botao-limpar-concluidas">
+        Limpar concluídas
+      </button>
+    </section>
+
+    <!-- Lista de tarefas -->
+    <section class="painel painel--lista" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista" class="visually-hidden">Lista de tarefas</h2>
+
+      <ul id="lista-tarefas" class="lista-tarefas"></ul>
+
+      <!-- Estado vazio -->
+      <div id="estado-vazio" class="estado-vazio" hidden>
+        <div class="estado-vazio__icone" aria-hidden="true">🗒️</div>
+        <p class="estado-vazio__titulo">Nada por aqui ainda</p>
+        <p class="estado-vazio__texto">Adicione uma tarefa acima para começar a organizar seu dia.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Organizaê &middot; Desenvolvido como trabalho prático &middot; <span id="ano-atual"></span></p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
